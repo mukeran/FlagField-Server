@@ -1,0 +1,33 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Editor workspace
+.idea
+.vscode
+.uploads
+
+# Dist files
+dist
+
+# Configures
+config.json
+setup-lock
+
+# Uploads
+uploads
+
+# API Test
+api_test
+
+# MySQL datas
+data

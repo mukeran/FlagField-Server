@@ -1,0 +1,35 @@
+version: "3"
+services:
+  server:
+    build: .
+    ports:
+      - 9999:80
+    volumes:
+      - ./config.json:/opt/FlagField/config.json:ro
+      - ./uploads:/opt/FlagField/uploads
+    networks:
+      - internal
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      DATABASE_NAME: "FlagField"
+      SYSTEM_ADMIN_USERNAME: "admin"
+      SYSTEM_ADMIN_PASSWORD: "Us@5VPQx&M5%"
+      SYSTEM_ADMIN_EMAIL: "user@example.com"
+  mysql:
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      - internal
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    image: mysql:8.0
+  redis:
+    networks:
+      - internal
+    image: redis:5
+
+networks:
+  internal:
